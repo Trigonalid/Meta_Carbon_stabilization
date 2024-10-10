@@ -1,0 +1,43 @@
+
+# Packages
+```{r}
+library("tidyverse")
+library("revtools")
+library("readxl")
+library("janitor")
+library("bayestestR")
+library("mi")
+library("metafor")
+library("multidplyr")
+```
+
+```{r packages, message = FALSE, warning = F }
+knitr::opts_chunk$set(echo = TRUE,  message = FALSE,  warning = FALSE,  tidy = TRUE)
+library(pacman)
+p_load("tidyverse", #data wrangling 
+       "revtools", # article handling
+       "readxl", # readl excel files
+       "janitor", # column names
+       "bayestestR", # bootstrap summaries
+       "mi", # multiple imputation
+       "metafor", # meta-analytic model
+       "multidplyr", "parallel") # parallel processing
+```
+
+Query -
+
+
+
+TITLE( (wheat OR nitrogen) AND (protein OR yield) ) AND
+
+PUBYEAR > 1980
+
+```{r}
+path <- "articles/articles already searched/"
+
+files <- list.files(path = path, pattern = "*.ris")
+
+first_search = load_bibliography(path = path, files = files)
+View(first_search[,1:5])
+```
+
